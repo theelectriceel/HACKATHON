@@ -97,3 +97,5 @@ This is localhost-only with a local demo session token, not production authentic
 Provenance tracking is conservative context exposure, not exact token-level causation. HMAC receipts bind recorded bytes but cannot prevent a local operator deleting the entire stream. Z3 verifies the encoded policy abstraction only. The prototype does not implement a full CaMeL/Fides planner, distributed consensus, arbitrary shell containment or universal attack prevention.
 
 The [advanced design](docs/PROMPTGUARD_ADVANCED_DESIGN.md) contains future work as well as implemented concepts. The current API status and this README describe what is actually available.
+#   H A C K A T H O N  
+ 
