@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "parser_version": "sec-duration-facts-v1",
+  "as_of": "2026-11-07",
+  "created_at": "2026-11-07T15:22:17.207919+00:00",
+  "freeze_policy": "All inputs, transforms, grouped splits and publisher default detector threshold fixed before any scoring; no threshold optimization on held-out test.",
+  "financial_split": {
+    "test": [
+      "AAPL",
+      "MSFT",
+      "NVDA"
+    ],
+    "dev": [
+      "GOOG",
+      "AMZN",
+      "META"
+    ]
+  },
+  "warnings": [
+    "Public guard-model training overlap cannot be ruled out. Public evaluation is diagnostic, not independent generalization proof.",
+    "IndirectRAG is synthetic/templated publisher data. NotInject is a hard-benign diagnostic, not business-document prevalence.",
+    "Workflow attacks are authored harmless derivatives; actual SEC values are real data. Repeated variants share a base-task group.",
+    "A SEC representation is not independent corroboration of the same filing."
+  ],
+  "financial": {
+    "facts": 36,
+    "sources": 6,
+    "notes": 36,
+    "cases": 144,
+    "downloads": [
+      {
+        "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000320193.json",
+        "retrieved_at": "2026-11-07T15:22:17.587160+00:00",
+        "sha256": "f085735b4d08fb116ade18d24247ffabe11df8eb52eae6556b165831f15ef1ad",
+        "bytes": 3859564,
+        "content_type": "application/json",
+        "etag": null,
+        "path": "data/raw/sec/CIK0000320193.json"
+      },
+      {
+        "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json",
+        "retrieved_at": "2026-11-07T15:22:18.194112+00:00",
+        "sha256": "8c1903c041f5c27e86ed15f37debb1f41882b7904bba129ef9edc76478b1e8ea",
+        "bytes": 4938072,
+        "content_type": "application/json",
+        "etag": null,
+        "path": "data/raw/sec/CIK0000789019.json"
+      },
+      {
+        "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001045810.json",
+        "retrieved_at": "2026-11-07T15:22:18.713670+00:00",
+        "sha256": "19ef503a5770f5660964b3c3aea6937579d9b359da344afe6a9adf59c63d26ff",
+        "bytes": 4092966,
+        "content_type": "application/json",
+        "etag": null,
+        "path": "data/raw/sec/CIK0001045810.json"
+      },
+      {
+        "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json",
+        "retrieved_at": "2026-11-07T15:22:19.612326+00:00",
+        "sha256": "f87bc183f74b45ecf9a0933e0e0a1b6b97ead51a9d29367a7dae436574e1c1d0",
+        "bytes": 3250837,
+        "content_type": "application/json",
+        "etag": null,
+        "path": "data/raw/sec/CIK0001652044.json"
+      },
+      {
+        "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json",
+        "retrieved_at": "2026-11-07T15:22:20.136255+00:00",
+        "sha256": "acddb7c0a6973a1fd08372de3b292298a34eae7f42a7eedc4bdebd3ac659c8fd",
+        "bytes": 4554378,
+        "content_type": "application/json",
+        "etag": null,
+        "path": "data/raw/sec/CIK0001018724.json"
+      },
+      {
+        "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json",
+        "retrieved_at": "2026-11-07T15:22:20.739410+00:00",
+        "sha256": "f8e539cea9d363752df2f9bb33078c19ae897ff7f34d49fe4d9a732d032b94f7",
+        "bytes": 2810958,
+        "content_type": "application/json",
+        "etag": null,
+        "path": "data/raw/sec/CIK0001326801.json"
+      }
+    ]
+  },
+  "public": {
+    "test_rows": 948,
+    "dev_rows": 546,
+    "test_attacks": 410,
+    "test_benign": 538,
+    "datasets": {
+      "notinject": {
+        "repo": "leolee99/NotInject",
+        "revision": "847ae76cf8fea5ed325429e569ae8cfef022d2e0",
+        "license": "mit",
+        "files": [
+          "data/NotInject_one-00000-of-00001.parquet",
+          "data/NotInject_two-00000-of-00001.parquet",
+          "data/NotInject_three-00000-of-00001.parquet"
+        ]
+      },
+      "deepset": {
+        "repo": "deepset/prompt-injections",
+        "revision": "4f61ecb038e9c3fb77e21034b22511b523772cdd",
+        "license": "conflicting metadata: apache-2.0 top-level, cc-by-4.0 dataset_info; retain attribution and source card",
+        "files": [
+          "data/test-00000-of-00001-701d16158af87368.parquet",
+          "data/train-00000-of-00001-9564e8b05b4757ab.parquet"
+        ]
+      },
+      "indirectrag": {
+        "repo": "heisenberg-88/indirectrag-bench",
+        "revision": "93254b5e80ba1345c2a25aec2b44fcf479bf52f5",
+        "license": "mit",
+        "files": [
+          "indirectrag_bench.jsonl"
+        ]
+      }
+    },
+    "downloads": [
+      {
+        "url": "https://huggingface.co/datasets/leolee99/NotInject/resolve/847ae76cf8fea5ed325429e569ae8cfef022d2e0/README.md",
+        "retrieved_at": "2026-11-07T15:22:31.206560+00:00",
+        "sha256": "ffaf685021522a526f94af2047e5099ec6b7439a462c67e0ecaca0d631a0d43f",
+        "bytes": 2973,
+        "content_type": "text/plain; charset=utf-8",
+        "etag": "\"87958379fac69a6ea287107a5c5e48baf1ebe1d8\"",
+        "path": "data/raw/notinject/README.md"
+      },
+      {
+        "url": "https://huggingface.co/datasets/leolee99/NotInject/resolve/847ae76cf8fea5ed325429e569ae8cfef022d2e0/data/NotInject_one-00000-of-00001.parquet",
+        "retrieved_at": "2026-11-07T15:22:31.647137+00:00",
+        "sha256": "5b1d3a8ec341205305efd8c6d2cabeb5ba0f594dd8726b08ee7fde1a46ddc6ec",
+        "bytes": 10859,
+        "content_type": "application/octet-stream",
+        "etag": "\"27fd1ca5c295d952e391ce267bbcedf0bc9d2828d748bb870de86e1156bc48df\"",
+        "path": "data/raw/notinject/data/NotInject_one-00000-of-00001.parquet"
+      },
+      {
+        "url": "https://huggingface.co/datasets/leolee99/NotInject/resolve/847ae76cf8fea5ed325429e569ae8cfef022d2e0/data/NotInject_two-00000-of-00001.parquet",
+        "retrieved_at": "2026-11-07T15:22:39.285008+00:00",
+        "sha256": "a5a8c1b3b851b0b5acc3b6caf8bfee26d7da631b2967dd31ca90358df8883feb",
+        "bytes": 11183,
+        "content_type": "application/octet-stream",
+        "etag": "\"c8542dbb63970fe57c4f9bef70e4421f3d79bce0dd98133bbd66fabc18d195ce\"",
+        "path": "data/raw/notinject/data/NotInject_two-00000-of-00001.parquet"
+      },
+      {
+        "url": "https://huggingface.co/datasets/leolee99/NotInject/resolve/847ae76cf8fea5ed325429e569ae8cfef022d2e0/data/NotInject_three-00000-of-00001.parquet",
+        "retrieved_at": "2026-11-07T15:22:39.626714+00:00",
+        "sha256": "d5c685b123570c092a0f374ba6bdf324b2026d905a2751a243eb2bb360d411a8",
+        "bytes": 13009,
+        "content_type": "application/octet-stream",
+        "etag": "\"1674a8157af5279a180e4b91dfac71541c4c7940355524923560171576f89bfa\"",
+        "path": "data/raw/notinject/data/NotInject_three-00000-of-00001.parquet"
+      },
+      {
+        "url": "https://huggingface.co/datasets/deepset/prompt-injections/resolve/4f61ecb038e9c3fb77e21034b22511b523772cdd/README.md",
+        "retrieved_at": "2026-11-07T15:22:39.804073+00:00",
+        "sha256": "d90b4518dfe06154deeec938243d1ec9119bdfbfd2105aee9cf1567999764b94",
+        "bytes": 500,
+        "content_type": "text/plain; charset=utf-8",
+        "etag": "\"d3a63fc0a09231cd1563afb14facfd9d55adcd03\"",
+        "path": "data/raw/deepset/README.md"
+      },
+      {
+        "url": "https://huggingface.co/datasets/deepset/prompt-injections/resolve/4f61ecb038e9c3fb77e21034b22511b523772cdd/data/test-00000-of-00001-701d16158af87368.parquet",
+        "retrieved_at": "2026-11-07T15:22:40.358882+00:00",
+        "sha256": "39ac797cabc157eeed58435a08593b2952bb6cb16fc394a2d383f447cc7b246e",
+        "bytes": 10892,
+        "content_type": "application/octet-stream",
+        "etag": "\"2468c40ed10a5efc7e6269a2f4772b5eb35bd33fe65cd9e6fbc9e9e0a4ff241d\"",
+        "path": "data/raw/deepset/data/test-00000-of-00001-701d16158af87368.parquet"
+      },
+      {
+        "url": "https://huggingface.co/datasets/deepset/prompt-injections/resolve/4f61ecb038e9c3fb77e21034b22511b523772cdd/data/train-00000-of-00001-9564e8b05b4757ab.parquet",
+        "retrieved_at": "2026-11-07T15:22:40.789298+00:00",
+        "sha256": "2e10bc7ab30f542c97e4e83e2a5683000b5057d25ec10908784c631d44124c04",
+        "bytes": 40323,
+        "content_type": "application/octet-stream",
+        "etag": "\"12bff9b2f7ac7336a5e17d7fbe2539a8c6b25a6859843a4f37f6444aacd33fca\"",
+        "path": "data/raw/deepset/data/train-00000-of-00001-9564e8b05b4757ab.parquet"
+      },
+      {
+        "url": "https://huggingface.co/datasets/heisenberg-88/indirectrag-bench/resolve/93254b5e80ba1345c2a25aec2b44fcf479bf52f5/README.md",
+        "retrieved_at": "2026-11-07T15:22:41.101006+00:00",
+        "sha256": "8cc4265d61061bb76b46c1d4c031e89996328759ac3a9babf43ed3942f3d35e9",
+        "bytes": 7052,
+        "content_type": "text/plain; charset=utf-8",
+        "etag": "\"7379f6e74f1fc56532aeffa0ede66fa8723c2d16\"",
+        "path": "data/raw/indirectrag/README.md"
+      },
+      {
+        "url": "https://huggingface.co/datasets/heisenberg-88/indirectrag-bench/resolve/93254b5e80ba1345c2a25aec2b44fcf479bf52f5/indirectrag_bench.jsonl",
+        "retrieved_at": "2026-11-07T15:22:41.452336+00:00",
+        "sha256": "46bf29947e2b201696c559e9867d281720530488cc787d0ec576a7bf5d82b745",
+        "bytes": 332134,
+        "content_type": "text/plain; charset=utf-8",
+        "etag": "\"b1879ee0ff9a2d588048b392a2101bd97f826abf\"",
+        "path": "data/raw/indirectrag/indirectrag_bench.jsonl"
+      }
+    ],
+    "deduplication": "Whitespace/case normalized SHA256 exact duplicates only; test wins; no semantic/family overlap guarantee."
+  },
+  "derived_hashes": {
+    "detector_dev.jsonl": "08712f484c1d624620ce632d878fa5cc811f5d0d3fd9e61dcc8e8b95ede7ed56",
+    "detector_test.jsonl": "eb1936605ce5bed28d252a0027ffe658cb8c86b4a450a8bd036cb34a0fa9ca5c",
+    "financial_facts.json": "4730a5a709ca7006263ef67fa2f56c0260be681f8084cb387fa1338e588be751",
+    "indirectrag_cases.jsonl": "ba91005ca55297c2708c38b29a1582687306a3a3426d93832c6ad4354d873e47",
+    "notes.json": "7a2ec9b7b82a84b7c4565ba56477aa1274c2975fd4eac1fc2ce5db9f9fdbc7ad",
+    "sources.json": "a6d910057ccf08fc05e51262fda4f40aa9603e4e41aa0f1814372aaf2c96c478",
+    "workflow_cases.jsonl": "037d1c3624e6c41c05017c1c44ef309c6be4107d08de6a4b53161a3fcdea8510"
+  }
+}

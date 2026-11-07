@@ -1,0 +1,115 @@
+{
+  "policy_id": "support-agent",
+  "version": 1,
+  "default_effect": "DENY",
+  "rules": [
+    {
+      "id": "permit-lookup_customer",
+      "tool": "lookup_customer",
+      "effect": "ALLOW",
+      "enabled": true,
+      "conditions": [],
+      "pathway": null,
+      "reason": "Registered business capability"
+    },
+    {
+      "id": "permit-export_customer_data",
+      "tool": "export_customer_data",
+      "effect": "ALLOW",
+      "enabled": true,
+      "conditions": [],
+      "pathway": null,
+      "reason": "Registered business capability"
+    },
+    {
+      "id": "permit-send_email",
+      "tool": "send_email",
+      "effect": "ALLOW",
+      "enabled": true,
+      "conditions": [],
+      "pathway": null,
+      "reason": "Registered business capability"
+    },
+    {
+      "id": "permit-issue_refund",
+      "tool": "issue_refund",
+      "effect": "ALLOW",
+      "enabled": true,
+      "conditions": [],
+      "pathway": null,
+      "reason": "Registered business capability"
+    },
+    {
+      "id": "permit-process_document",
+      "tool": "process_document",
+      "effect": "ALLOW",
+      "enabled": true,
+      "conditions": [],
+      "pathway": null,
+      "reason": "Registered business capability"
+    },
+    {
+      "id": "refund-approval",
+      "tool": "issue_refund",
+      "effect": "REQUIRE_APPROVAL",
+      "enabled": true,
+      "conditions": [
+        {
+          "field": "args.amount_cents",
+          "op": "gt",
+          "value": 7500,
+          "unit": "cents"
+        }
+      ],
+      "pathway": null,
+      "reason": "A refund above $75 requires approval for this exact action"
+    },
+    {
+      "id": "external-after-export",
+      "tool": "send_email",
+      "effect": "DENY",
+      "enabled": true,
+      "conditions": [
+        {
+          "field": "args.destination",
+          "op": "ne",
+          "value": "approved",
+          "unit": null
+        }
+      ],
+      "pathway": {
+        "after": [
+          "lookup_customer",
+          "export_customer_data"
+        ],
+        "basis": "completed",
+        "same_resource": true
+      },
+      "reason": "Customer information was exported in this session; use an approved destination"
+    },
+    {
+      "id": "any-export-external",
+      "tool": "send_email",
+      "effect": "DENY",
+      "enabled": true,
+      "conditions": [
+        {
+          "field": "args.destination",
+          "op": "ne",
+          "value": "approved",
+          "unit": null
+        }
+      ],
+      "pathway": {
+        "after": [
+          "export_customer_data"
+        ],
+        "basis": "completed",
+        "same_resource": true
+      },
+      "reason": "An export alone is sufficient to restrict subsequent external transmission"
+    }
+  ],
+  "cache_ttl_seconds": 0,
+  "refund_cumulative_limit_cents": 7500
+}

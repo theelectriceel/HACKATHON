@@ -1,0 +1,9 @@
+{
+  "url": "https://huggingface.co/datasets/heisenberg-88/indirectrag-bench/resolve/93254b5e80ba1345c2a25aec2b44fcf479bf52f5/indirectrag_bench.jsonl",
+  "retrieved_at": "2026-11-07T15:22:41.452336+00:00",
+  "sha256": "46bf29947e2b201696c559e9867d281720530488cc787d0ec576a7bf5d82b745",
+  "bytes": 332134,
+  "content_type": "text/plain; charset=utf-8",
+  "etag": "\"b1879ee0ff9a2d588048b392a2101bd97f826abf\"",
+  "path": "data/raw/indirectrag/indirectrag_bench.jsonl"
+}

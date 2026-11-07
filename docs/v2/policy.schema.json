@@ -1,0 +1,200 @@
+{
+  "$defs": {
+    "Condition": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "pattern": "^(args|resource|identity)\\.[a-zA-Z0-9_]{1,80}$",
+          "title": "Field",
+          "type": "string"
+        },
+        "op": {
+          "enum": [
+            "eq",
+            "ne",
+            "gt",
+            "gte",
+            "lt",
+            "lte",
+            "in",
+            "not_in"
+          ],
+          "title": "Op",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "enum": [
+                "cents",
+                "count"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        }
+      },
+      "required": [
+        "field",
+        "op",
+        "value"
+      ],
+      "title": "Condition",
+      "type": "object"
+    },
+    "Pathway": {
+      "additionalProperties": false,
+      "properties": {
+        "after": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "title": "After",
+          "type": "array"
+        },
+        "basis": {
+          "default": "completed",
+          "enum": [
+            "attempted",
+            "completed"
+          ],
+          "title": "Basis",
+          "type": "string"
+        },
+        "same_resource": {
+          "default": true,
+          "title": "Same Resource",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "after"
+      ],
+      "title": "Pathway",
+      "type": "object"
+    },
+    "Rule": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-zA-Z0-9_.:@-]{1,120}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "tool": {
+          "pattern": "^[a-zA-Z0-9_.:@-]{1,120}$",
+          "title": "Tool",
+          "type": "string"
+        },
+        "effect": {
+          "enum": [
+            "ALLOW",
+            "DENY",
+            "REQUIRE_APPROVAL"
+          ],
+          "title": "Effect",
+          "type": "string"
+        },
+        "enabled": {
+          "default": true,
+          "title": "Enabled",
+          "type": "boolean"
+        },
+        "conditions": {
+          "items": {
+            "$ref": "#/$defs/Condition"
+          },
+          "maxItems": 20,
+          "title": "Conditions",
+          "type": "array"
+        },
+        "pathway": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Pathway"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "reason": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "tool",
+        "effect",
+        "reason"
+      ],
+      "title": "Rule",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "policy_id": {
+      "pattern": "^[a-zA-Z0-9_.:@-]{1,120}$",
+      "title": "Policy Id",
+      "type": "string"
+    },
+    "version": {
+      "minimum": 1,
+      "title": "Version",
+      "type": "integer"
+    },
+    "default_effect": {
+      "default": "DENY",
+      "enum": [
+        "ALLOW",
+        "DENY"
+      ],
+      "title": "Default Effect",
+      "type": "string"
+    },
+    "rules": {
+      "items": {
+        "$ref": "#/$defs/Rule"
+      },
+      "maxItems": 100,
+      "title": "Rules",
+      "type": "array"
+    },
+    "cache_ttl_seconds": {
+      "default": 0,
+      "maximum": 30,
+      "minimum": 0,
+      "title": "Cache Ttl Seconds",
+      "type": "integer"
+    },
+    "refund_cumulative_limit_cents": {
+      "default": 7500,
+      "maximum": 1000000,
+      "minimum": 0,
+      "title": "Refund Cumulative Limit Cents",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "policy_id",
+    "version",
+    "rules"
+  ],
+  "title": "Policy",
+  "type": "object"
+}

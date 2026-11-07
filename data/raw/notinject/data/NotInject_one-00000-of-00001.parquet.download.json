@@ -1,0 +1,9 @@
+{
+  "url": "https://huggingface.co/datasets/leolee99/NotInject/resolve/847ae76cf8fea5ed325429e569ae8cfef022d2e0/data/NotInject_one-00000-of-00001.parquet",
+  "retrieved_at": "2026-11-07T15:22:31.647137+00:00",
+  "sha256": "5b1d3a8ec341205305efd8c6d2cabeb5ba0f594dd8726b08ee7fde1a46ddc6ec",
+  "bytes": 10859,
+  "content_type": "application/octet-stream",
+  "etag": "\"27fd1ca5c295d952e391ce267bbcedf0bc9d2828d748bb870de86e1156bc48df\"",
+  "path": "data/raw/notinject/data/NotInject_one-00000-of-00001.parquet"
+}

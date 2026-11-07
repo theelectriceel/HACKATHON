@@ -1,0 +1,6 @@
+-r requirements.txt
+fastmcp==2.14.7
+mcp==1.30.0
+nemoguardrails==0.24.1
+cryptography==50.0.2
+starlette==0.49.3

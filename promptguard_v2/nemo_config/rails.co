@@ -1,0 +1,14 @@
+define flow pg horizon input
+  $safe = execute pg_horizon_check(text=$user_message)
+  if not $safe
+    bot pg content blocked
+    stop
+
+define flow pg horizon output
+  $safe = execute pg_horizon_check(text=$bot_message)
+  if not $safe
+    bot pg content blocked
+    stop
+
+define bot pg content blocked
+  "External content withheld by PROMPTGUARD."

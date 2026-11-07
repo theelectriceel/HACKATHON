@@ -1,0 +1,10 @@
+models: []
+colang_version: "1.0"
+enable_multi_step_generation: false
+rails:
+  input:
+    flows:
+      - pg horizon input
+  output:
+    flows:
+      - pg horizon output

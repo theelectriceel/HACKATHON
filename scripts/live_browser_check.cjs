@@ -1,0 +1,24 @@
+const {chromium} = require('C:/Users/abraa/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const path=require('path');
+(async()=>{
+ const browser=await chromium.launch({headless:true,channel:'chrome'});
+ const page=await browser.newPage({viewport:{width:1440,height:1050}});
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('http://127.0.0.1:8766',{waitUntil:'networkidle'});
+ await page.getByRole('button',{name:'Run live comparison'}).click();
+ await page.waitForFunction(()=>document.getElementById('agent-source').textContent==='Live model executions',null,{timeout:180000});
+ const agent=await page.locator('#agent-results .status').allTextContents();
+ await page.screenshot({path:path.resolve('artifacts/demo-agent-live.png'),fullPage:true});
+ console.log(JSON.stringify({agent,errors}));
+ await page.getByRole('button',{name:'RAG test application'}).click();
+ await page.getByRole('button',{name:'Compare answers'}).click();
+ await page.waitForFunction(()=>document.getElementById('rag-source').textContent==='Live model executions',null,{timeout:180000});
+ const rag=await page.locator('#rag-results .answer').allTextContents();
+ await page.screenshot({path:path.resolve('artifacts/demo-rag-live.png'),fullPage:true});
+ console.log(JSON.stringify({rag,errors}));
+ await page.getByRole('button',{name:'Evaluation results'}).click();
+ await page.waitForTimeout(700);
+ await page.screenshot({path:path.resolve('artifacts/demo-benchmark.png'),fullPage:true});
+ if(agent.some(s=>s.includes('incomplete'))||errors.length)process.exitCode=1;
+ await browser.close();
+})().catch(e=>{console.error(e.message);process.exitCode=1});

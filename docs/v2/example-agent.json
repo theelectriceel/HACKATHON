@@ -1,0 +1,172 @@
+{
+  "agent_id": "support-agent",
+  "principal_id": "operator-alex",
+  "policy_id": "support-agent",
+  "tenant_id": "acme",
+  "customer_id": "cust-alex",
+  "tools": [
+    {
+      "name": "lookup_customer",
+      "arguments_schema": {
+        "type": "object",
+        "properties": {
+          "customer_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          }
+        },
+        "required": [
+          "customer_id"
+        ],
+        "additionalProperties": false
+      },
+      "sensitive": true,
+      "resource_arg": "customer_id",
+      "resource_type": "customer",
+      "identity_bindings": [
+        "tenant_id",
+        "customer_id"
+      ],
+      "scan_fields": [],
+      "log_arguments": [
+        "customer_id",
+        "destination",
+        "amount_cents"
+      ]
+    },
+    {
+      "name": "export_customer_data",
+      "arguments_schema": {
+        "type": "object",
+        "properties": {
+          "customer_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          }
+        },
+        "required": [
+          "customer_id"
+        ],
+        "additionalProperties": false
+      },
+      "sensitive": true,
+      "resource_arg": "customer_id",
+      "resource_type": "customer",
+      "identity_bindings": [
+        "tenant_id",
+        "customer_id"
+      ],
+      "scan_fields": [],
+      "log_arguments": [
+        "customer_id",
+        "destination",
+        "amount_cents"
+      ]
+    },
+    {
+      "name": "send_email",
+      "arguments_schema": {
+        "type": "object",
+        "properties": {
+          "customer_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "destination": {
+            "type": "string",
+            "enum": [
+              "approved",
+              "external"
+            ]
+          }
+        },
+        "required": [
+          "customer_id",
+          "destination"
+        ],
+        "additionalProperties": false
+      },
+      "sensitive": true,
+      "resource_arg": "customer_id",
+      "resource_type": "customer",
+      "identity_bindings": [
+        "tenant_id",
+        "customer_id"
+      ],
+      "scan_fields": [],
+      "log_arguments": [
+        "customer_id",
+        "destination",
+        "amount_cents"
+      ]
+    },
+    {
+      "name": "issue_refund",
+      "arguments_schema": {
+        "type": "object",
+        "properties": {
+          "customer_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "amount_cents": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000000
+          }
+        },
+        "required": [
+          "customer_id",
+          "amount_cents"
+        ],
+        "additionalProperties": false
+      },
+      "sensitive": true,
+      "resource_arg": "customer_id",
+      "resource_type": "customer",
+      "identity_bindings": [
+        "tenant_id",
+        "customer_id"
+      ],
+      "scan_fields": [],
+      "log_arguments": [
+        "customer_id",
+        "destination",
+        "amount_cents"
+      ]
+    },
+    {
+      "name": "process_document",
+      "arguments_schema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 20000
+          }
+        },
+        "required": [
+          "text"
+        ],
+        "additionalProperties": false
+      },
+      "sensitive": true,
+      "resource_arg": null,
+      "resource_type": null,
+      "identity_bindings": [],
+      "scan_fields": [
+        "text"
+      ],
+      "log_arguments": [
+        "customer_id",
+        "destination",
+        "amount_cents"
+      ]
+    }
+  ]
+}

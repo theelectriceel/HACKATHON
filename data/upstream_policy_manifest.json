@@ -1,0 +1,14 @@
+{
+  "name": "Existing Agent Guard example policy",
+  "kind": "real_existing_open_source_configuration",
+  "origin": "C:\\Users\\abraa\\Downloads\\agent-guard\\policy.example.yaml",
+  "retrieved_at": "2026-11-07T16:15:13.320979+00:00",
+  "sha256": "c35c6862c38975fd75444259433d7ad043dc0be3d4c806bc3ab624e3700f037d",
+  "license": "Apache-2.0; preserved in data/imported/AGENT_GUARD_LICENSE",
+  "attribution": "Agent Guard authors; original example configuration, not PROMPTGUARD source code.",
+  "observations": {
+    "explicit_default_allow": true,
+    "rule_count": 5,
+    "scope": "Example policy settings only; not evidence of a deployed system's permissions."
+  }
+}

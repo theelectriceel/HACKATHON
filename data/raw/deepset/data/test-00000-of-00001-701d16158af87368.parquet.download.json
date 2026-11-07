@@ -1,0 +1,9 @@
+{
+  "url": "https://huggingface.co/datasets/deepset/prompt-injections/resolve/4f61ecb038e9c3fb77e21034b22511b523772cdd/data/test-00000-of-00001-701d16158af87368.parquet",
+  "retrieved_at": "2026-11-07T15:22:40.358882+00:00",
+  "sha256": "39ac797cabc157eeed58435a08593b2952bb6cb16fc394a2d383f447cc7b246e",
+  "bytes": 10892,
+  "content_type": "application/octet-stream",
+  "etag": "\"2468c40ed10a5efc7e6269a2f4772b5eb35bd33fe65cd9e6fbc9e9e0a4ff241d\"",
+  "path": "data/raw/deepset/data/test-00000-of-00001-701d16158af87368.parquet"
+}

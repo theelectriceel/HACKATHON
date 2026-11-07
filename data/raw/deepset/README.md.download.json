@@ -1,0 +1,9 @@
+{
+  "url": "https://huggingface.co/datasets/deepset/prompt-injections/resolve/4f61ecb038e9c3fb77e21034b22511b523772cdd/README.md",
+  "retrieved_at": "2026-11-07T15:22:39.804073+00:00",
+  "sha256": "d90b4518dfe06154deeec938243d1ec9119bdfbfd2105aee9cf1567999764b94",
+  "bytes": 500,
+  "content_type": "text/plain; charset=utf-8",
+  "etag": "\"d3a63fc0a09231cd1563afb14facfd9d55adcd03\"",
+  "path": "data/raw/deepset/README.md"
+}
