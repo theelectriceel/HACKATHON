@@ -99,7 +99,7 @@ class PromptGuard:
         except ServiceUnavailable:
             raise ExecutionReportError("Tool executed, but its outcome could not be recorded. Do not retry automatically; reconcile this session.") from None
 
-1     def protect(self, name=None, *, capability=None, capabilities=None, amount_field=None, currency_field=None):
+    def protect(self, name=None, *, capability=None, capabilities=None, amount_field=None, currency_field=None):
         def decorate(function):
             signature = inspect.signature(function)
             hints = [capability] if isinstance(capability,str) else list(capability or capabilities or [])
